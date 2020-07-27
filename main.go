@@ -15,9 +15,14 @@ func main() {
 	genType := os.Args[1]
 	name := os.Args[2]
 	targetDirectory := os.Args[3]
+
 	switch genType {
 	case "api":
-		gen.GenerateAPI(name, targetDirectory)
+		err := gen.GenerateAPI(name, targetDirectory)
+		if err != nil {
+			fmt.Println(err.Error())
+			os.Exit(1)
+		}
 	default:
 		fmt.Printf("%v is not a supported generator.\nSupported generator is `api`.", genType)
 	}

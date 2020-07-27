@@ -10,7 +10,7 @@ build:
 	go build -o eza
 
 clean:
-	rm -f eza
+	rm -f eza && rm -rf ~/kittenapi
 
 test:
 	go test -v -coverprofile=cover.out
