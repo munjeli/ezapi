@@ -12,9 +12,10 @@ build:
 clean:
 	rm -f eza && rm -rf ~/kittenapi
 
-test:
-	go test -v -coverprofile=cover.out
-	go tool cover -func=cover.out
+test: testgen
+
+testgen:
+	cd generators && go test -v -coverprofile=cover.out && go tool cover -func=cover.out
 
 stats:
 	git ls-files | xargs wc -l

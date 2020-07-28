@@ -18,11 +18,11 @@ func GenerateAPI(name, targetDir string) error {
 // makeAPIDirs makes the directories for a new API.
 func makeAPIDirs(name, targetDir string) error {
 	dirPath := fmt.Sprintf("%s/apis/%s/server", targetDir, name)
-	fmt.Printf("Creating directories for new API: %s\n", dirPath)
 	err := os.MkdirAll(dirPath, 0775)
 	if err != nil {
 		return err
 	}
+	fmt.Printf("Created directories for new API: %s\n", dirPath)
 	return nil
 }
 
@@ -48,5 +48,6 @@ func makeNetSrvDirs(name, targetDir string) error {
 			return err
 		}
 	}
+	fmt.Println("Created directories for new networked service")
 	return nil
 }
