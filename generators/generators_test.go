@@ -1,6 +1,9 @@
 package generators
 
-import "testing"
+import (
+	"os"
+	"testing"
+)
 
 func TestGenerateAPI(t *testing.T) {
 	type args struct {
@@ -20,6 +23,14 @@ func TestGenerateAPI(t *testing.T) {
 			},
 			wantErr: true,
 		},
+		{
+			name: "valid args",
+			args: args{
+				name:      "kitten",
+				targetDir: "kittenapi",
+			},
+			wantErr: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -27,6 +38,14 @@ func TestGenerateAPI(t *testing.T) {
 				t.Errorf("GenerateAPI() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
+		if tt.args.targetDir != "" {
+			t.Cleanup( func(){
+				err := os.RemoveAll(tt.args.targetDir)
+				if err != nil {
+					t.Error(err.Error())
+				}
+			})
+		}
 	}
 }
 
@@ -48,6 +67,14 @@ func TestGenerateNetworkedService(t *testing.T) {
 			},
 			wantErr: true,
 		},
+		{
+			name: "valid args",
+			args: args{
+				name:      "kitten",
+				targetDir: "kittenapi",
+			},
+			wantErr: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -55,6 +82,14 @@ func TestGenerateNetworkedService(t *testing.T) {
 				t.Errorf("GenerateNetworkedService() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
+		if tt.args.targetDir != "" {
+			t.Cleanup( func(){
+				err := os.RemoveAll(tt.args.targetDir)
+				if err != nil {
+					t.Error(err.Error())
+				}
+			})
+		}
 	}
 }
 
@@ -76,6 +111,14 @@ func Test_makeAPIDirs(t *testing.T) {
 			},
 			wantErr: true,
 		},
+		{
+			name: "valid args",
+			args: args{
+				name:      "kitten",
+				targetDir: "kittennetsrv",
+			},
+			wantErr: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -83,6 +126,14 @@ func Test_makeAPIDirs(t *testing.T) {
 				t.Errorf("makeAPIDirs() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
+		if tt.args.targetDir != "" {
+			t.Cleanup( func(){
+				err := os.RemoveAll(tt.args.targetDir)
+				if err != nil {
+					t.Error(err.Error())
+				}
+			})
+		}
 	}
 }
 
@@ -104,6 +155,14 @@ func Test_makeNetSrvDirs(t *testing.T) {
 			},
 			wantErr: true,
 		},
+		{
+			name: "valid args",
+			args: args{
+				name:      "kitten",
+				targetDir: "kittennetsrv",
+			},
+			wantErr: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
@@ -111,5 +170,13 @@ func Test_makeNetSrvDirs(t *testing.T) {
 				t.Errorf("makeNetSrvDirs() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
+		if tt.args.targetDir != "" {
+			t.Cleanup( func(){
+				err := os.RemoveAll(tt.args.targetDir)
+				if err != nil {
+					t.Error(err.Error())
+				}
+			})
+		}
 	}
 }
