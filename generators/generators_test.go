@@ -39,7 +39,7 @@ func TestGenerateAPI(t *testing.T) {
 			}
 		})
 		if tt.args.targetDir != "" {
-			t.Cleanup( func(){
+			t.Cleanup(func() {
 				err := os.RemoveAll(tt.args.targetDir)
 				if err != nil {
 					t.Error(err.Error())
@@ -83,7 +83,7 @@ func TestGenerateNetworkedService(t *testing.T) {
 			}
 		})
 		if tt.args.targetDir != "" {
-			t.Cleanup( func(){
+			t.Cleanup(func() {
 				err := os.RemoveAll(tt.args.targetDir)
 				if err != nil {
 					t.Error(err.Error())
@@ -127,7 +127,7 @@ func Test_makeAPIDirs(t *testing.T) {
 			}
 		})
 		if tt.args.targetDir != "" {
-			t.Cleanup( func(){
+			t.Cleanup(func() {
 				err := os.RemoveAll(tt.args.targetDir)
 				if err != nil {
 					t.Error(err.Error())
@@ -171,7 +171,7 @@ func Test_makeNetSrvDirs(t *testing.T) {
 			}
 		})
 		if tt.args.targetDir != "" {
-			t.Cleanup( func(){
+			t.Cleanup(func() {
 				err := os.RemoveAll(tt.args.targetDir)
 				if err != nil {
 					t.Error(err.Error())
