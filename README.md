@@ -1,6 +1,17 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/munjeli/ezapi)](https://goreportcard.com/report/github.com/munjeli/ezapi) ![Go](https://github.com/munjeli/ezapi/workflows/Go/badge.svg)
 # ezapi
 Scaffold generator for APIs and services in Go.
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/munjeli/ezapi)](https://goreportcard.com/report/github.com/munjeli/ezapi) ![Go](https://github.com/munjeli/ezapi/workflows/Go/badge.svg)
+
+## Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Team](#team)
+- [License](#license)
+
+## Installation
+Clone the repo, run `make build`. You can add it to your path if you're going to do a lot of this. I named the executable `eza` because less typing.
 
 ## Usage
 ### make
@@ -34,3 +45,7 @@ Generates a service at `./puputil/service/puppy/`, and a server with a handler a
 You can generate multiple APIs, services and networked services in one repository without conflict assuming they're distinctly named. 
 
 `make run` will start a single server if there's just one in `apis` or `server`. Otherwise you need to call the API by name, i.e. `make run kitten` for the kitten API in the examples above. Same for `clean`. `make` will vet, fmt, and build the code to an executable named `eza` in the same dir. 
+
+## Contributing
+## Team
+## License
