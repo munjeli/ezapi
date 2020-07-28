@@ -1,4 +1,4 @@
-[![Go Report Card](https://goreportcard.com/badge/github.com/munjeli/ezapi)](https://goreportcard.com/report/github.com/munjeli/ezapi)
+[![Go Report Card](https://goreportcard.com/badge/github.com/munjeli/ezapi)](https://goreportcard.com/report/github.com/munjeli/ezapi) ![Go](https://github.com/munjeli/ezapi/workflows/Go/badge.svg)
 # ezapi
 Scaffold generator for APIs and services in Go.
 
