@@ -32,10 +32,7 @@ Examples:
 ./eza api kitten ./kittensdir
 ```
 Generates stubs for CRUD, a server, tests, and integration tests in a directory at `./kittensdir/apis/kitten/`. 
-```
-./eza srv kitten ./kittensdir
-```
-Generates a service for CRUD methods to back the `kitten` API at `./kittensdir/services/kitten/`
+
 ```
 ./eza netsrv puppy ./puputil
 ```
