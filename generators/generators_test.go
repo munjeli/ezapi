@@ -71,7 +71,7 @@ func TestGenerateNetworkedService(t *testing.T) {
 			name: "valid args",
 			args: args{
 				name:      "kitten",
-				targetDir: "kittenapi",
+				targetDir: "kittensvc",
 			},
 			wantErr: false,
 		},
@@ -93,10 +93,11 @@ func TestGenerateNetworkedService(t *testing.T) {
 	}
 }
 
-func Test_makeAPIDirs(t *testing.T) {
+func Test_makeDirs(t *testing.T) {
 	type args struct {
 		name      string
 		targetDir string
+		apiType string
 	}
 	tests := []struct {
 		name    string
@@ -108,66 +109,33 @@ func Test_makeAPIDirs(t *testing.T) {
 			args: args{
 				name:      "",
 				targetDir: "",
+				apiType: "",
 			},
 			wantErr: true,
 		},
 		{
-			name: "valid args",
+			name: "valid args for api",
+			args: args{
+				name:      "kitten",
+				targetDir: "kittennetapi",
+				apiType: "api",
+			},
+			wantErr: false,
+		},
+		{
+			name: "valid args for netsrv",
 			args: args{
 				name:      "kitten",
 				targetDir: "kittennetsrv",
+				apiType: "netsrv",
 			},
 			wantErr: false,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if err := makeAPIDirs(tt.args.name, tt.args.targetDir); (err != nil) != tt.wantErr {
+			if err := makeDirs(tt.args.name, tt.args.targetDir, tt.args.apiType); (err != nil) != tt.wantErr {
 				t.Errorf("makeAPIDirs() error = %v, wantErr %v", err, tt.wantErr)
-			}
-		})
-		if tt.args.targetDir != "" {
-			t.Cleanup(func() {
-				err := os.RemoveAll(tt.args.targetDir)
-				if err != nil {
-					t.Error(err.Error())
-				}
-			})
-		}
-	}
-}
-
-func Test_makeNetSrvDirs(t *testing.T) {
-	type args struct {
-		name      string
-		targetDir string
-	}
-	tests := []struct {
-		name    string
-		args    args
-		wantErr bool
-	}{
-		{
-			name: "empty args",
-			args: args{
-				name:      "",
-				targetDir: "",
-			},
-			wantErr: true,
-		},
-		{
-			name: "valid args",
-			args: args{
-				name:      "kitten",
-				targetDir: "kittennetsrv",
-			},
-			wantErr: false,
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if err := makeNetSrvDirs(tt.args.name, tt.args.targetDir); (err != nil) != tt.wantErr {
-				t.Errorf("makeNetSrvDirs() error = %v, wantErr %v", err, tt.wantErr)
 			}
 		})
 		if tt.args.targetDir != "" {
