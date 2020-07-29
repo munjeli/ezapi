@@ -117,7 +117,7 @@ func Test_makeDirs(t *testing.T) {
 			name: "valid args for api",
 			args: args{
 				name:      "kitten",
-				targetDir: "kittennetapi",
+				targetDir: "animals",
 				apiType: "api",
 			},
 			wantErr: false,
@@ -126,7 +126,7 @@ func Test_makeDirs(t *testing.T) {
 			name: "valid args for netsrv",
 			args: args{
 				name:      "kitten",
-				targetDir: "kittennetsrv",
+				targetDir: "netanimals",
 				apiType: "netsrv",
 			},
 			wantErr: false,

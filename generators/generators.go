@@ -19,7 +19,7 @@ func GenerateAPI(name, targetDir string) error {
 func makeDirs(name, targetDir, apiType string) error {
 	var dirs []string
 	if apiType == "api" {
-		dirs = []string{fmt.Sprintf("%s/apis/%s/server", targetDir, name)}
+		dirs = []string{fmt.Sprintf("%s/apis/%sapi/server", targetDir, name)}
 	} else if apiType == "netsrv" {
 		dirs = []string{
 			fmt.Sprintf("%s/service/%s", targetDir, name),
