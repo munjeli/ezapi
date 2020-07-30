@@ -1,4 +1,8 @@
-all: format vet build
+package templates
+
+const (
+	// APIMakeTemplate has the content for an API Makefile.
+	APIMakeTemplate = `all: format vet build
 
 vet:
 go vet
@@ -20,3 +24,7 @@ cd apis/{{ .Name }}/server && go test -v -coverprofile=cover.out && go tool cove
 
 stats:
 git ls-files | xargs wc -l
+`
+	// APIMakePath is where to put the Makefile once it's generated.
+	APIMakePath = `{{ .TargetDir }}/Makefile`
+)

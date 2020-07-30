@@ -15,6 +15,18 @@ func GenerateAPI(name, targetDir string) error {
 	return nil
 }
 
+// GenerateNetworkedService generates stubs for a service with a
+// single endpoint and server for exposing a utility on a server.
+// This is not what to use for a user-facing application, instead it is
+// for internal services that don't need full CRUD exposed, like daemons.
+func GenerateNetworkedService(name, targetDir string) error {
+	err := makeDirs(name, targetDir, "netsrv")
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 // makeAPIDirs makes the directories for the API type.
 func makeDirs(name, targetDir, apiType string) error {
 	var dirs []string
@@ -38,14 +50,8 @@ func makeDirs(name, targetDir, apiType string) error {
 	return nil
 }
 
-// GenerateNetworkedService generates stubs for a service with a
-// single endpoint and server for exposing a utility on a server.
-// This is not what to use for a user-facing application, instead it is
-// for internal services that don't need full CRUD exposed, like daemons.
-func GenerateNetworkedService(name, targetDir string) error {
-	err := makeDirs(name, targetDir, "netsrv")
-	if err != nil {
-		return err
-	}
+// generateTemplates will use the API type to select the correct templates
+// and generate the files from an input object.
+func generateTemplates(apiType, name, targetDir string) error {
 	return nil
 }

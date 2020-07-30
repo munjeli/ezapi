@@ -1,4 +1,6 @@
-package {{ .Name }}api
+package templates
+
+const APICRUDTemplate = `package {{ .Name }}api
 
 import (
 	"io/ioutil"
@@ -80,4 +82,4 @@ func Delete{{ .Name }}(w http.ResponseWriter, r *http.Request){
 func validateDelete{{ .Name }}(r *http.Request) (err error) {
 	// TODO validate the create request here.
 	return err
-}
+}`
