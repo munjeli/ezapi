@@ -25,8 +25,4 @@ integration:
 stats:
 	git ls-files | xargs wc -l
 `
-	// APIMakePath is where to put the Makefile once it's generated.
-	APIMakePath = "%s/Makefile"
-	// Makefile is the filename.
-	Makefile = "Makefile"
 )
