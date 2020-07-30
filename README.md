@@ -48,6 +48,6 @@ Fork it, write your code, make a PR. 85% test coverage is requested as minimum.
 
 | ![Ele Munjeli](https://avatars3.githubusercontent.com/u/1256674?s=200&u=39055650c504feef4d1c8ee662373932d0ccd074&v=4) |
 | :---: |
-| <a href="https://github.com/elemunjeli" target="_blank">**Ele Munjeli**</a> |
+| <a href="https://github.com/munjeli" target="_blank">**Ele Munjeli**</a> |
 ## License
 This project is developed under an Apache 2.0 license. Read it: [LICENSE](https://github.com/munjeli/ezapi/blob/master/LICENSE)
