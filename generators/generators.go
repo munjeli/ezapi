@@ -36,6 +36,10 @@ func GenerateNetworkedService(name, targetDir string) error {
 	if err != nil {
 		return err
 	}
+	err = generateFilesFromTemplates("netsrv", name, targetDir)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
