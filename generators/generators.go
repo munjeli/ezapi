@@ -14,8 +14,8 @@ type templateInput struct {
 }
 
 type templateFile struct {
-	tmpl string
-	path string
+	tmpl  string
+	path  string
 	title string
 }
 
@@ -31,6 +31,10 @@ var APIFiles = []templateFile{
 // templates to stub out CRUD and a server.
 func GenerateAPI(name, targetDir string) error {
 	err := makeDirs(name, targetDir, "api")
+	if err != nil {
+		return err
+	}
+	err = generateFilesFromTemplates("api", name, targetDir)
 	if err != nil {
 		return err
 	}
@@ -72,9 +76,9 @@ func makeDirs(name, targetDir, apiType string) error {
 	return nil
 }
 
-// generateTemplates will use the API type to select the correct templates
+// generateFilesFromTemplates will use the API type to select the correct templates
 // and generate the files from an input object.
-func generateTemplates(apiType, name, targetDir string) error {
+func generateFilesFromTemplates(apiType, name, targetDir string) error {
 	var tfiles []templateFile
 	i := templateInput{
 		Name:      name,
@@ -83,13 +87,16 @@ func generateTemplates(apiType, name, targetDir string) error {
 	if apiType == "api" {
 		tfiles = APIFiles
 	}
-	for _, f := range tfiles {
-		t := template.Must(template.New(f.title).Parse(f.tmpl))
-		err := t.Execute(os.Stdout, i)
+	for _, tf := range tfiles {
+		t := template.Must(template.New(tf.title).Parse(tf.tmpl))
+		f, err := os.Create(fmt.Sprintf(tmpl.APIMakePath, i.TargetDir))
 		if err != nil {
 			return err
 		}
-		fmt.Println(f.path)
+		err = t.Execute(f, i)
+		if err != nil {
+			return err
+		}
 	}
 	return nil
 }
