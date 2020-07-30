@@ -37,15 +37,15 @@ func TestGenerateAPI(t *testing.T) {
 			if err := GenerateAPI(tt.args.name, tt.args.targetDir); (err != nil) != tt.wantErr {
 				t.Errorf("GenerateAPI() error = %v, wantErr %v", err, tt.wantErr)
 			}
+			if tt.args.targetDir != "" {
+				t.Cleanup(func() {
+					err := os.RemoveAll(tt.args.targetDir)
+					if err != nil {
+						t.Error(err.Error())
+					}
+				})
+			}
 		})
-		if tt.args.targetDir != "" {
-			t.Cleanup(func() {
-				err := os.RemoveAll(tt.args.targetDir)
-				if err != nil {
-					t.Error(err.Error())
-				}
-			})
-		}
 	}
 }
 
@@ -81,15 +81,15 @@ func TestGenerateNetworkedService(t *testing.T) {
 			if err := GenerateNetworkedService(tt.args.name, tt.args.targetDir); (err != nil) != tt.wantErr {
 				t.Errorf("GenerateNetworkedService() error = %v, wantErr %v", err, tt.wantErr)
 			}
+			if tt.args.targetDir != "" {
+				t.Cleanup(func() {
+					err := os.RemoveAll(tt.args.targetDir)
+					if err != nil {
+						t.Error(err.Error())
+					}
+				})
+			}
 		})
-		if tt.args.targetDir != "" {
-			t.Cleanup(func() {
-				err := os.RemoveAll(tt.args.targetDir)
-				if err != nil {
-					t.Error(err.Error())
-				}
-			})
-		}
 	}
 }
 
@@ -97,7 +97,7 @@ func Test_makeDirs(t *testing.T) {
 	type args struct {
 		name      string
 		targetDir string
-		apiType string
+		apiType   string
 	}
 	tests := []struct {
 		name    string
@@ -109,7 +109,7 @@ func Test_makeDirs(t *testing.T) {
 			args: args{
 				name:      "",
 				targetDir: "",
-				apiType: "",
+				apiType:   "",
 			},
 			wantErr: true,
 		},
@@ -118,7 +118,7 @@ func Test_makeDirs(t *testing.T) {
 			args: args{
 				name:      "kitten",
 				targetDir: "animals",
-				apiType: "api",
+				apiType:   "api",
 			},
 			wantErr: false,
 		},
@@ -127,7 +127,7 @@ func Test_makeDirs(t *testing.T) {
 			args: args{
 				name:      "kitten",
 				targetDir: "netanimals",
-				apiType: "netsrv",
+				apiType:   "netsrv",
 			},
 			wantErr: false,
 		},
@@ -137,14 +137,14 @@ func Test_makeDirs(t *testing.T) {
 			if err := makeDirs(tt.args.name, tt.args.targetDir, tt.args.apiType); (err != nil) != tt.wantErr {
 				t.Errorf("makeAPIDirs() error = %v, wantErr %v", err, tt.wantErr)
 			}
+			if tt.args.targetDir != "" {
+				t.Cleanup(func() {
+					err := os.RemoveAll(tt.args.targetDir)
+					if err != nil {
+						t.Error(err.Error())
+					}
+				})
+			}
 		})
-		if tt.args.targetDir != "" {
-			t.Cleanup(func() {
-				err := os.RemoveAll(tt.args.targetDir)
-				if err != nil {
-					t.Error(err.Error())
-				}
-			})
-		}
 	}
 }
