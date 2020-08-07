@@ -13,11 +13,17 @@ type TemplateFile struct {
 	Title string
 }
 
+
 var APIFiles = []TemplateFile{
 	{
 		APIMakeTemplate,
 		MakePath,
 		Makefile,
+	},
+	{
+		APITestCRUDTemplate,
+		 APIPath,
+		APITestFileName,
 	},
 }
 
