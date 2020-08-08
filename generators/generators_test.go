@@ -37,14 +37,14 @@ func TestGenerateAPI(t *testing.T) {
 			if err := GenerateAPI(tt.args.name, tt.args.targetDir); (err != nil) != tt.wantErr {
 				t.Errorf("GenerateAPI() error = %v, wantErr %v", err, tt.wantErr)
 			}
-			if tt.args.targetDir != "" {
-				t.Cleanup(func() {
-					err := os.RemoveAll(tt.args.targetDir)
-					if err != nil {
-						t.Error(err.Error())
-					}
-				})
-			}
+			//if tt.args.targetDir != "" {
+			//	t.Cleanup(func() {
+			//		err := os.RemoveAll(tt.args.targetDir)
+			//		if err != nil {
+			//			t.Error(err.Error())
+			//		}
+			//	})
+			//}
 		})
 	}
 }
@@ -163,7 +163,7 @@ func Test_generateFilesFromTemplates(t *testing.T) {
 		{
 			name: "empty apiType",
 			args: args{
-				apiType: "",
+				apiType:   "",
 				name:      "kitten",
 				targetDir: "",
 			},

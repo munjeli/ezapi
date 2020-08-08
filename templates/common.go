@@ -13,7 +13,6 @@ type TemplateFile struct {
 	Title string
 }
 
-
 var APIFiles = []TemplateFile{
 	{
 		APIMakeTemplate,
@@ -22,8 +21,13 @@ var APIFiles = []TemplateFile{
 	},
 	{
 		APITestCRUDTemplate,
-		 APIPath,
+		APIPath,
 		APITestFileName,
+	},
+	{
+		ServerTemplate,
+		ServerAPIPath,
+		ServerTitle,
 	},
 }
 
@@ -32,5 +36,15 @@ var NetSrvFiles = []TemplateFile{
 		NetSrvMakeTemplate,
 		MakePath,
 		Makefile,
+	},
+	{
+		ServerTemplate,
+		ServerNetSrvPath,
+		ServerTitle,
+	},
+	{
+		HandlerTemplate,
+		ServerNetSrvPath,
+		HandlerTitle,
 	},
 }
