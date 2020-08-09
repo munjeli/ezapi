@@ -69,27 +69,58 @@ func makeDirs(name, targetDir, apiType string) error {
 // generateFilesFromTemplates will use the API type to select the correct templates
 // and generate the files from an input object.
 func generateFilesFromTemplates(apiType, name, targetDir string) error {
-	var tfiles []tmpl.TemplateFile
 	i := templateInput{
 		Name:      name,
 		TargetDir: targetDir,
 	}
 	if apiType == "api" {
-		tfiles = tmpl.APIFiles
+		if err := generateMakefile(i, tmpl.APIMakeTemplate); err != nil {
+			return err
+		}
+		if err := generateAPIFiles(i); err != nil {
+			return err
+		}
 	} else if apiType == "netsrv" {
-		tfiles = tmpl.NetSrvFiles
-	}
-	for _, tf := range tfiles {
-		t := template.Must(template.New(tf.Title).Parse(tf.Tmpl))
-		p = template.Must(template.New(tf.Path).Parse()
-		f, err := os.Create()
-		if err != nil {
+		if err := generateMakefile(i, tmpl.NetSrvMakeTemplate); err != nil {
 			return err
 		}
-		err = t.Execute(f, i)
-		if err != nil {
+		if err := generateNetSrvFiles(i); err != nil {
 			return err
 		}
+	} else {
+		return fmt.Errorf("not a supported API Type: %s", apiType)
 	}
+	return nil
+}
+
+func generateMakefile(i templateInput, tmp string) error {
+	t := template.Must(template.New("Makefile").Parse(tmp))
+	f, err := os.Create(fmt.Sprintf(tmpl.MakePath, i.TargetDir))
+	if err != nil {
+		return err
+	}
+	err = t.Execute(f, i)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func generateNetSrvFiles(i templateInput) error {
+	//for _, tf := range tfiles {
+	//	t := template.Must(template.New(tf.Title).Parse(tf.Tmpl))
+	//	f, err := os.Create()
+	//	if err != nil {
+	//		return err
+	//	}
+	//	err = t.Execute(f, i)
+	//	if err != nil {
+	//		return err
+	//	}
+	//}
+	return nil
+}
+
+func generateAPIFiles(i templateInput) error {
 	return nil
 }
