@@ -81,8 +81,8 @@ func generateFilesFromTemplates(apiType, name, targetDir string) error {
 	}
 	for _, tf := range tfiles {
 		t := template.Must(template.New(tf.Title).Parse(tf.Tmpl))
-		p = template.Must()
-		f, err := os.Create(fmt.Sprintf(tmpl.MakePath, i.TargetDir))
+		p = template.Must(template.New(tf.Path).Parse()
+		f, err := os.Create()
 		if err != nil {
 			return err
 		}
