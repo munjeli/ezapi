@@ -1,7 +1,7 @@
 package templates
 
 const (
-	ServerTemplate   = `This is the server template for {{ .Name }}`
+	ServerTemplate   = `package server`
 	ServerTitle      = `server.go`
 	ServerAPIPath    = `{{ .TargetDir }}/apis/{{ .Name }}api/server/`
 	ServerNetSrvPath = `{{ .TargetDir }}/server/`

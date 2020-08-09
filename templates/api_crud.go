@@ -1,6 +1,7 @@
 package templates
 
-const APICRUDTemplate = `package {{ .Name }}api
+const (
+	APICRUDTemplate = `package {{ .Name }}api
 
 import (
 	"io/ioutil"
@@ -83,3 +84,5 @@ func validateDelete{{ .Name }}(r *http.Request) (err error) {
 	// TODO validate the create request here.
 	return err
 }`
+	APITitle = `{{ .Name }}api.go`
+)

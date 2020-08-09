@@ -1,7 +1,7 @@
 package templates
 
 const (
-	APITestCRUDTemplate = `This is the template for CRUD test {{ .Name }}`
-	APIPath             = `{{ .TargetDir }}/apis/{{ .Name }}/`
+	APITestCRUDTemplate = `package {{ .Name }}api`
+	APIPath             = `{{ .TargetDir }}/apis/{{ .Name }}api/`
 	APITestFileName     = `{{ .Name }}api_test.go`
 )

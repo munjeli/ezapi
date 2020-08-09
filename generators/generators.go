@@ -1,6 +1,7 @@
 package generators
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 	"text/template"
@@ -78,14 +79,21 @@ func generateFilesFromTemplates(apiType, name, targetDir string) error {
 		tfiles = tmpl.APIFiles
 	} else if apiType == "netsrv" {
 		tfiles = tmpl.NetSrvFiles
+	} else {
+		return fmt.Errorf("unsupported API type")
 	}
 	for _, tf := range tfiles {
-		t := template.Must(template.New(tf.Title).Parse(tf.Tmpl))
-		p = template.Must(template.New(tf.Path).Parse()
-		f, err := os.Create()
+		// Make a writer for the path template.
+		var w bytes.Buffer
+		p := template.Must(template.New("path").Parse(tf.Path + tf.Title))
+		if err := p.Execute(&w, i); err != nil {
+			return err
+		}
+		f, err := os.Create(w.String())
 		if err != nil {
 			return err
 		}
+		t := template.Must(template.New(tf.Title).Parse(tf.Tmpl))
 		err = t.Execute(f, i)
 		if err != nil {
 			return err

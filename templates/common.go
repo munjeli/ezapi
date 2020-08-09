@@ -2,7 +2,7 @@ package templates
 
 const (
 	// MakePath is where to put the Makefile once it's generated.
-	MakePath = "%s/Makefile"
+	MakePath = `{{ .TargetDir }}/`
 	// Makefile is the filename.
 	Makefile = "Makefile"
 )
@@ -18,6 +18,11 @@ var APIFiles = []TemplateFile{
 		APIMakeTemplate,
 		MakePath,
 		Makefile,
+	},
+	{
+		APICRUDTemplate,
+		APIPath,
+		APITitle,
 	},
 	{
 		APITestCRUDTemplate,

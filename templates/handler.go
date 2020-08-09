@@ -1,6 +1,6 @@
 package templates
 
 const (
-	HandlerTemplate = `This is a template for the handler {{ .Name }}`
+	HandlerTemplate = `package server`
 	HandlerTitle    = `handler.go`
 )
