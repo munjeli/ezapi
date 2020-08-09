@@ -70,11 +70,11 @@ func makeDirs(name, targetDir, apiType string) error {
 // generateFilesFromTemplates will use the API type to select the correct templates
 // and generate the files from an input object.
 func generateFilesFromTemplates(apiType, name, targetDir string) error {
-	var tfiles []tmpl.TemplateFile
 	i := templateInput{
 		Name:      name,
 		TargetDir: targetDir,
 	}
+	var tfiles []tmpl.TemplateFile
 	if apiType == "api" {
 		tfiles = tmpl.APIFiles
 	} else if apiType == "netsrv" {
@@ -96,7 +96,7 @@ func generateFilesFromTemplates(apiType, name, targetDir string) error {
 		t := template.Must(template.New(tf.Title).Parse(tf.Tmpl))
 		err = t.Execute(f, i)
 		if err != nil {
-			return err
+
 		}
 	}
 	return nil
