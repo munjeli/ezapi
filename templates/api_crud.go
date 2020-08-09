@@ -8,9 +8,9 @@ import (
 	"net/http"
 )
 
-// Create{{ .Name }} calls the create job with the data in the req body.
-func Create{{ .Name }}(w http.ResponseWriter, r *http.Request){
-	if err := validateCreate{{ .Name }}(r); err != nil {
+// Create{{ .TitleName }} calls the create job with the data in the req body.
+func Create{{ .TitleName }}(w http.ResponseWriter, r *http.Request){
+	if err := validateCreate{{ .TitleName }}(r); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
@@ -26,15 +26,15 @@ func Create{{ .Name }}(w http.ResponseWriter, r *http.Request){
 	}
 }
 
-// validateCreate{{ .Name }} checks that requirements are met before
+// validateCreate{{ .TitleName }} checks that requirements are met before
 // kicking off the create job.
-func validateCreate{{ .Name }}(r *http.Request) (err error) {
+func validateCreate{{ .TitleName }}(r *http.Request) (err error) {
 	// TODO validate the create request here.
 	return err
 }
 
-// Get{{ .Name }} returns the resource data based on a query or uid.
-func Get{{ .Name }}(w http.ResponseWriter, r *http.Request){
+// Get{{ .TitleName }} returns the resource data based on a query or uid.
+func Get{{ .TitleName }}(w http.ResponseWriter, r *http.Request){
 	// TODO query system for resource data.
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -46,8 +46,8 @@ func Get{{ .Name }}(w http.ResponseWriter, r *http.Request){
 	}
 }
 
-// Patch{{ .Name }} will update properties of the resource.
-func Patch{{ .Name }}(w http.ResponseWriter, r *http.Request){
+// Patch{{ .TitleName }} will update properties of the resource.
+func Patch{{ .TitleName }}(w http.ResponseWriter, r *http.Request){
 	// TODO post patch of resource json.
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -59,10 +59,10 @@ func Patch{{ .Name }}(w http.ResponseWriter, r *http.Request){
 	}
 }
 
-// Delete{{ .Name }} will validate a request to get rid of a resource
+// Delete{{ .TitleName }} will validate a request to get rid of a resource
 // and delete it by ID.
-func Delete{{ .Name }}(w http.ResponseWriter, r *http.Request){
-	if err := validateDelete{{ .Name }}(r); err != nil {
+func Delete{{ .TitleName }}(w http.ResponseWriter, r *http.Request){
+	if err := validateDelete{{ .TitleName }}(r); err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
@@ -78,9 +78,9 @@ func Delete{{ .Name }}(w http.ResponseWriter, r *http.Request){
 	}
 }
 
-// validateDelete{{ .Name }} checks that requirements are met before
+// validateDelete{{ .TitleName }} checks that requirements are met before
 // kicking off the create job.
-func validateDelete{{ .Name }}(r *http.Request) (err error) {
+func validateDelete{{ .TitleName }}(r *http.Request) (err error) {
 	// TODO validate the create request here.
 	return err
 }`

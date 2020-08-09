@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"os"
+	"strings"
 	"text/template"
 
 	tmpl "github.com/munjeli/ezapi/templates"
@@ -11,6 +12,7 @@ import (
 
 type templateInput struct {
 	Name      string
+	TitleName string
 	TargetDir string
 }
 
@@ -72,6 +74,7 @@ func makeDirs(name, targetDir, apiType string) error {
 func generateFilesFromTemplates(apiType, name, targetDir string) error {
 	i := templateInput{
 		Name:      name,
+		TitleName: strings.Title(name),
 		TargetDir: targetDir,
 	}
 	var tfiles []tmpl.TemplateFile
