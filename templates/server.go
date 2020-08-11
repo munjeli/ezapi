@@ -1,7 +1,7 @@
 package templates
 
 const (
-	APIServerTemplate   = `package server
+	APIServerTemplate   = `package main
 
 import (
 	"log"
@@ -15,7 +15,7 @@ func main () {
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 `
-	NetSrvServerTemplate   = `package server
+	NetSrvServerTemplate   = `package main
 
 import (
 	"log"
@@ -27,9 +27,9 @@ func main () {
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 `
-	ServerTitle      = `server.go`
-	ServerAPIPath    = `{{ .TargetDir }}/apis/{{ .Name }}api/server/`
-	ServerNetSrvPath = `{{ .TargetDir }}/server/`
+	ServerTitle      = `main.go`
+	ServerAPIPath    = `{{ .TargetDir }}/`
+	ServerNetSrvPath = `{{ .TargetDir }}/`
 
 )
 

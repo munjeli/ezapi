@@ -1,7 +1,7 @@
 package templates
 
 const (
-	HandlerTemplate = `package server
+	HandlerTemplate = `package main
 
 import (
 	"io/ioutil"
