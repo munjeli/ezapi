@@ -11,16 +11,16 @@ format:
 	find . -name '*.go' | xargs gofmt -s -w
 
 build:
-	go build -o {{ .Name }}
+	cd apis/{{ .Name }}api/server && go build -o {{ .Name }}
 
 clean:
-	rm -f {{ .Name }}
+	cd apis/{{ .Name }}api/server && rm -f {{ .Name }}.go
 
 testapi:
 	cd apis/{{ .Name }}api/ && go test -v -coverprofile=cover.out && go tool cover -func=cover.out
 
 integration:
-	cd integration && go test -v -coverprofile=cover.out && go tool cover -func=cover.out
+	cd apis/{{ .Name }}api/server && go test -v -coverprofile=cover.out && go tool cover -func=cover.out
 
 stats:
 	git ls-files | xargs wc -l

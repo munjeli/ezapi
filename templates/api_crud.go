@@ -14,14 +14,14 @@ func Create{{ .TitleName }}(w http.ResponseWriter, r *http.Request){
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	body, err := ioutil.ReadAll(r.Body)
+	_, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 	// TODO kick off create job here.
 	// response
-	w.Header().Set("Content-Type", "application/json")
-	if _, err = w.Write(body); err != nil {
+	w.Header().Set("Content-Type", "text/plain")
+	if _, err = w.Write([]byte("Hello {{ .TitleName }}")); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 	}
 }

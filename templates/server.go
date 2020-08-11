@@ -11,7 +11,7 @@ import (
 )
 
 func main () {
-	http.HandleFunc("/", {{ .Name }}api.Create{{ .TitleName }})
+	http.HandleFunc("/create", {{ .Name }}api.Create{{ .TitleName }})
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 `
@@ -28,8 +28,6 @@ func main () {
 }
 `
 	ServerTitle      = `main.go`
-	ServerAPIPath    = `{{ .TargetDir }}/`
-	ServerNetSrvPath = `{{ .TargetDir }}/`
-
+	ServerAPIPath    = `{{ .TargetDir }}/apis/{{ .Name }}api/server/`
+	ServerNetSrvPath = `{{ .TargetDir }}/server/`
 )
-
