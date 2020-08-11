@@ -1,6 +1,8 @@
 package templates
 
 const (
+	// HandlerTemplate is the single endpoint handler
+	// for a net service.
 	HandlerTemplate = `package main
 
 import (
@@ -28,5 +30,6 @@ func validate(r *http.Request) (err error) {
 	return err
 }
 `
+	// HandlerTitle is the name of the handler file.
 	HandlerTitle = `handler.go`
 )

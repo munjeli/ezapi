@@ -1,6 +1,7 @@
 package templates
 
 const (
+	// APICRUDTemplate writes a basic CRUD API with validation.
 	APICRUDTemplate = `package {{ .Name }}api
 
 import (
@@ -84,5 +85,6 @@ func validateDelete{{ .TitleName }}(r *http.Request) (err error) {
 	// TODO validate the create request here.
 	return err
 }`
+	// APITitle is the name of the CRUD API file.
 	APITitle = `{{ .Name }}api.go`
 )

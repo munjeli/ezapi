@@ -1,6 +1,8 @@
 package templates
 
 const (
+	// APIServerTemplate is the template for a server for
+	// the CRUD API.
 	APIServerTemplate = `package main
 
 import (
@@ -15,6 +17,8 @@ func main () {
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 `
+	// NetSrvServerTemplate is the template for a server for a
+	// networked service.
 	NetSrvServerTemplate = `package main
 
 import (

@@ -7,12 +7,16 @@ const (
 	Makefile = "Makefile"
 )
 
+// TemplateFile holds the metadata for the files
+// that are generated from templates.
 type TemplateFile struct {
 	Tmpl  string
 	Path  string
 	Title string
 }
 
+// APIFiles is a list of templated files
+// for building a CRUD API.
 var APIFiles = []TemplateFile{
 	{
 		APIMakeTemplate,
@@ -36,6 +40,8 @@ var APIFiles = []TemplateFile{
 	},
 }
 
+// NetSrvFiles are the templated files for generating
+// a basic networked service.
 var NetSrvFiles = []TemplateFile{
 	{
 		NetSrvMakeTemplate,

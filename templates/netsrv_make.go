@@ -1,5 +1,7 @@
 package templates
 
+// NetSrvMakeTemplate is the template for the Makefile
+// of a networked service.
 const NetSrvMakeTemplate = `all: format vet build
 
 vet:
