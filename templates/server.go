@@ -23,7 +23,7 @@ import (
 )
 
 func main () {
-	http.HandleFunc("/", server.{{ .TitleName }}Handler)
+	http.HandleFunc("/", {{ .Name }}Handler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 `
