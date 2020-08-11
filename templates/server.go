@@ -31,7 +31,10 @@ func main () {
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 `
-	ServerTitle      = `main.go`
-	ServerAPIPath    = `{{ .TargetDir }}/apis/{{ .Name }}api/server/`
+	// ServerTitle is the name of the server file for either netsrv or API.
+	ServerTitle = `main.go`
+	// ServerAPIPath is the path to the main.go in a generated API.
+	ServerAPIPath = `{{ .TargetDir }}/apis/{{ .Name }}api/server/`
+	// ServerNetSrvPath is the path to the main.go in a generated netsrv.
 	ServerNetSrvPath = `{{ .TargetDir }}/server/`
 )
