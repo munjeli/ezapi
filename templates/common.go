@@ -30,7 +30,7 @@ var APIFiles = []TemplateFile{
 		APITestFileName,
 	},
 	{
-		ServerTemplate,
+		APIServerTemplate,
 		ServerAPIPath,
 		ServerTitle,
 	},
@@ -43,7 +43,7 @@ var NetSrvFiles = []TemplateFile{
 		Makefile,
 	},
 	{
-		ServerTemplate,
+		NetSrvServerTemplate,
 		ServerNetSrvPath,
 		ServerTitle,
 	},

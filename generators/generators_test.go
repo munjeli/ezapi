@@ -27,7 +27,7 @@ func TestGenerateAPI(t *testing.T) {
 			name: "valid args",
 			args: args{
 				name:      "kitten",
-				targetDir: "kittenapi",
+				targetDir: "kittendir",
 			},
 			wantErr: false,
 		},
