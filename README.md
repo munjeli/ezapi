@@ -36,7 +36,7 @@ Generates stubs for CRUD, a server, tests, and integration tests in a directory 
 ```
 ./eza netsrv puppy ./puputil
 ```
-Generates a service at `./puputil/service/puppy/`, and a server with a handler at `./puputil/server/puppy/`
+Generates a service at `./puputil/service/puppy/`, and a server with a handler at `./puputil/server/`
 
 You can generate multiple APIs, services and networked services in one repository without conflict assuming they're distinctly named. 
 

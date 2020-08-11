@@ -1,7 +1,7 @@
 package templates
 
 const (
-	APIServerTemplate   = `package main
+	APIServerTemplate = `package main
 
 import (
 	"log"
@@ -15,7 +15,7 @@ func main () {
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 `
-	NetSrvServerTemplate   = `package main
+	NetSrvServerTemplate = `package main
 
 import (
 	"log"

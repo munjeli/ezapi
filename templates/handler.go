@@ -28,5 +28,5 @@ func validate(r *http.Request) (err error) {
 	return err
 }
 `
-	HandlerTitle    = `handler.go`
+	HandlerTitle = `handler.go`
 )

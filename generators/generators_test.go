@@ -81,14 +81,14 @@ func TestGenerateNetworkedService(t *testing.T) {
 			if err := GenerateNetworkedService(tt.args.name, tt.args.targetDir); (err != nil) != tt.wantErr {
 				t.Errorf("GenerateNetworkedService() error = %v, wantErr %v", err, tt.wantErr)
 			}
-			//if tt.args.targetDir != "" {
-			//	t.Cleanup(func() {
-			//		err := os.RemoveAll(tt.args.targetDir)
-			//		if err != nil {
-			//			t.Error(err.Error())
-			//		}
-			//	})
-			//}
+			if tt.args.targetDir != "" {
+				t.Cleanup(func() {
+					err := os.RemoveAll(tt.args.targetDir)
+					if err != nil {
+						t.Error(err.Error())
+					}
+				})
+			}
 		})
 	}
 }
